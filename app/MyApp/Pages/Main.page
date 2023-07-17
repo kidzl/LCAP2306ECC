@@ -1,0 +1,60 @@
+{
+	"Caption": "Main",
+	"Controls": [
+		{
+			"_Name": "SectionedTable0",
+			"_Type": "Control.Type.SectionedTable",
+			"Sections": [
+				{
+					"Buttons": [
+						{
+							"OnPress": "/MyApp/Actions/Authors/NavToAuthors_List.action",
+							"Alignment": "Center",
+							"Title": "Authors",
+							"ButtonType": "Text",
+							"Semantic": "Tint"
+						},
+						{
+							"OnPress": "/MyApp/Actions/Books/NavToBooks_List.action",
+							"Alignment": "Center",
+							"Title": "Books",
+							"ButtonType": "Text",
+							"Semantic": "Tint"
+						},
+						{
+							"OnPress": "/MyApp/Actions/Contacts/NavToContacts_List.action",
+							"Alignment": "Center",
+							"Title": "Contacts",
+							"ButtonType": "Text",
+							"Semantic": "Tint"
+						}
+					],
+					"_Name": "SectionButtonTable0",
+					"_Type": "Section.Type.ButtonTable"
+				}
+			]
+		}
+	],
+	"_Name": "Main",
+	"_Type": "Page",
+	"ToolBar": {
+		"Items": [
+			{
+				"_Name": "LogoutToolbarItem",
+				"_Type": "Control.Type.ToolbarItem",
+				"Caption": "Logout",
+				"OnPress": "/MyApp/Actions/LogoutMessage.action"
+			},
+			{
+				"_Name": "UpdateToolbarItem",
+				"_Type": "Control.Type.ToolbarItem",
+				"Caption": "Update",
+				"Enabled": true,
+				"Clickable": true,
+				"OnPress": "/MyApp/Actions/AppUpdateProgressBanner.action",
+				"Visible": "$(PLT,true,true,false)"
+			}
+		]
+	},
+	"PrefersLargeCaption": true
+}

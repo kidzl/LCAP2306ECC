@@ -1,0 +1,101 @@
+{
+	"Caption": "Authors Detail",
+	"DesignTimeTarget": {
+		"Service": "/MyApp/Services/service1.service",
+		"EntitySet": "Authors",
+		"QueryOptions": ""
+	},
+	"ActionBar": {
+		"Items": []
+	},
+	"Controls": [
+		{
+			"Sections": [
+				{
+					"ObjectHeader": {
+						"Tags": [],
+						"DetailImage": "",
+						"HeadlineText": "{ID}",
+						"Subhead": "{createdAt}",
+						"BodyText": "",
+						"Footnote": "{modifiedAt}",
+						"Description": "{createdBy}",
+						"StatusText": "{modifiedBy}",
+						"StatusImage": "",
+						"SubstatusImage": "",
+						"SubstatusText": ""
+					},
+					"_Type": "Section.Type.ObjectHeader"
+				},
+				{
+					"KeyAndValues": [
+						{
+							"KeyName": "createdAt",
+							"Value": "{createdAt}"
+						},
+						{
+							"KeyName": "createdBy",
+							"Value": "{createdBy}"
+						},
+						{
+							"KeyName": "modifiedAt",
+							"Value": "{modifiedAt}"
+						},
+						{
+							"KeyName": "modifiedBy",
+							"Value": "{modifiedBy}"
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 2
+					},
+					"MaxItemCount": 1,
+					"_Name": "SectionKeyValue0",
+					"_Type": "Section.Type.KeyValue"
+				},
+				{
+					"Header": {
+						"Caption": "books"
+					},
+					"ObjectCell": {
+						"AccessoryType": "disclosureIndicator",
+						"Description": "{stock}",
+						"AvatarStack": {
+							"Avatars": [
+								{
+									"Image": ""
+								}
+							],
+							"ImageIsCircular": false
+						},
+						"Icons": [],
+						"StatusImage": "",
+						"Title": "{title}",
+						"Footnote": "{price}",
+						"PreserveIconStackSpacing": false,
+						"StatusText": "{currency}",
+						"Subhead": "{ID}",
+						"SubstatusText": "",
+						"OnPress": "/MyApp/Actions/Books/NavToBooks_Detail.action"
+					},
+					"EmptySection": {
+						"Caption": "No record found!"
+					},
+					"Target": {
+						"EntitySet": "{@odata.readLink}/books",
+						"Service": "/MyApp/Services/service1.service"
+					},
+					"_Type": "Section.Type.ObjectTable"
+				}
+			],
+			"DataSubscriptions": [
+				"Books"
+			],
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable"
+		}
+	],
+	"_Type": "Page",
+	"_Name": "Authors_Detail",
+	"PrefersLargeCaption": true
+}

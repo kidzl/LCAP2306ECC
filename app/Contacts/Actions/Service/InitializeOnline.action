@@ -1,0 +1,10 @@
+{
+    "Service": "/Contacts/Services/service1.service",
+    "_Type": "Action.Type.ODataService.Initialize",
+    "ShowActivityIndicator": true,
+    "OnSuccess": "/Contacts/Actions/Service/InitializeOnlineSuccessMessage.action",
+    "OnFailure": "/Contacts/Actions/Service/InitializeOnlineFailureMessage.action",
+    "ActionResult": {
+        "_Name": "init"
+    }
+}

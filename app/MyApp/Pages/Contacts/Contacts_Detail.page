@@ -1,0 +1,241 @@
+{
+	"Caption": "Contacts Detail",
+	"DesignTimeTarget": {
+		"Service": "/MyApp/Services/service1.service",
+		"EntitySet": "Contacts",
+		"QueryOptions": ""
+	},
+	"ActionBar": {
+		"Items": []
+	},
+	"Controls": [
+		{
+			"Sections": [
+				{
+					"ObjectHeader": {
+						"Tags": [],
+						"DetailImage": "",
+						"HeadlineText": "{FullName}",
+						"Subhead": "{IdentityIsRemoved}",
+						"BodyText": "",
+						"Footnote": "{IsMarkedForDeletion}",
+						"Description": "{BirthDate}",
+						"StatusText": "{IsConsumer}",
+						"StatusImage": "",
+						"SubstatusImage": "",
+						"SubstatusText": "{IsContactPerson}"
+					},
+					"_Type": "Section.Type.ObjectHeader"
+				},
+				{
+					"KeyAndValues": [
+						{
+							"KeyName": "IdentityIsRemoved",
+							"Value": "{IdentityIsRemoved}"
+						},
+						{
+							"KeyName": "BirthDate",
+							"Value": "{BirthDate}"
+						},
+						{
+							"KeyName": "IsMarkedForDeletion",
+							"Value": "{IsMarkedForDeletion}"
+						},
+						{
+							"KeyName": "IsConsumer",
+							"Value": "{IsConsumer}"
+						},
+						{
+							"KeyName": "IsContactPerson",
+							"Value": "{IsContactPerson}"
+						},
+						{
+							"KeyName": "Latitude",
+							"Value": "{Latitude}"
+						},
+						{
+							"KeyName": "LastChangeDateTime",
+							"Value": "{LastChangeDateTime}"
+						},
+						{
+							"KeyName": "InteractionContactImageURL",
+							"Value": "{InteractionContactImageURL}"
+						},
+						{
+							"KeyName": "LastChangedByUser",
+							"Value": "{LastChangedByUser}"
+						},
+						{
+							"KeyName": "Longitude",
+							"Value": "{Longitude}"
+						},
+						{
+							"KeyName": "CreationDateTime",
+							"Value": "{CreationDateTime}"
+						},
+						{
+							"KeyName": "CreatedByUser",
+							"Value": "{CreatedByUser}"
+						},
+						{
+							"KeyName": "SpatialReferenceSystem",
+							"Value": "{SpatialReferenceSystem}"
+						},
+						{
+							"KeyName": "IsMainContact",
+							"Value": "{IsMainContact}"
+						},
+						{
+							"KeyName": "FullName",
+							"Value": "{FullName}"
+						},
+						{
+							"KeyName": "FirstName",
+							"Value": "{FirstName}"
+						},
+						{
+							"KeyName": "LastName",
+							"Value": "{LastName}"
+						},
+						{
+							"KeyName": "Department",
+							"Value": "{Department}"
+						},
+						{
+							"KeyName": "DepartmentName",
+							"Value": "{DepartmentName}"
+						},
+						{
+							"KeyName": "Function",
+							"Value": "{Function}"
+						},
+						{
+							"KeyName": "ContactFunctionName",
+							"Value": "{ContactFunctionName}"
+						},
+						{
+							"KeyName": "MaritalStatus",
+							"Value": "{MaritalStatus}"
+						},
+						{
+							"KeyName": "MaritalStatusName",
+							"Value": "{MaritalStatusName}"
+						},
+						{
+							"KeyName": "CityName",
+							"Value": "{CityName}"
+						},
+						{
+							"KeyName": "StreetName",
+							"Value": "{StreetName}"
+						},
+						{
+							"KeyName": "AddressHouseNumber",
+							"Value": "{AddressHouseNumber}"
+						},
+						{
+							"KeyName": "Language",
+							"Value": "{Language}"
+						},
+						{
+							"KeyName": "LanguageName",
+							"Value": "{LanguageName}"
+						},
+						{
+							"KeyName": "EmailAddress",
+							"Value": "{EmailAddress}"
+						},
+						{
+							"KeyName": "PhoneNumber",
+							"Value": "{PhoneNumber}"
+						},
+						{
+							"KeyName": "MobileNumber",
+							"Value": "{MobileNumber}"
+						},
+						{
+							"KeyName": "FaxNumber",
+							"Value": "{FaxNumber}"
+						},
+						{
+							"KeyName": "HasMktgPermissionForDirectMail",
+							"Value": "{HasMktgPermissionForDirectMail}"
+						},
+						{
+							"KeyName": "Country",
+							"Value": "{Country}"
+						},
+						{
+							"KeyName": "CountryName",
+							"Value": "{CountryName}"
+						},
+						{
+							"KeyName": "AddressRegion",
+							"Value": "{AddressRegion}"
+						},
+						{
+							"KeyName": "RegionName",
+							"Value": "{RegionName}"
+						},
+						{
+							"KeyName": "GenderCode",
+							"Value": "{GenderCode}"
+						},
+						{
+							"KeyName": "GenderCodeName",
+							"Value": "{GenderCodeName}"
+						},
+						{
+							"KeyName": "ContactPostalCode",
+							"Value": "{ContactPostalCode}"
+						},
+						{
+							"KeyName": "FormOfAddress",
+							"Value": "{FormOfAddress}"
+						},
+						{
+							"KeyName": "FormOfAddressName",
+							"Value": "{FormOfAddressName}"
+						},
+						{
+							"KeyName": "WebsiteURL",
+							"Value": "{WebsiteURL}"
+						},
+						{
+							"KeyName": "ValidationStatus",
+							"Value": "{ValidationStatus}"
+						},
+						{
+							"KeyName": "ValidationStatusName",
+							"Value": "{ValidationStatusName}"
+						},
+						{
+							"KeyName": "Industry",
+							"Value": "{Industry}"
+						},
+						{
+							"KeyName": "IndustryName",
+							"Value": "{IndustryName}"
+						},
+						{
+							"KeyName": "CorporateAccountName",
+							"Value": "{CorporateAccountName}"
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 2
+					},
+					"MaxItemCount": 1,
+					"_Name": "SectionKeyValue0",
+					"_Type": "Section.Type.KeyValue"
+				}
+			],
+			"DataSubscriptions": [],
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable"
+		}
+	],
+	"_Type": "Page",
+	"_Name": "Contacts_Detail",
+	"PrefersLargeCaption": true
+}

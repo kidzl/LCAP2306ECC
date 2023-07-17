@@ -1,0 +1,69 @@
+{
+	"Caption": "Books Detail",
+	"DesignTimeTarget": {
+		"Service": "/MyApp/Services/service1.service",
+		"EntitySet": "Books",
+		"QueryOptions": ""
+	},
+	"ActionBar": {
+		"Items": []
+	},
+	"Controls": [
+		{
+			"Sections": [
+				{
+					"ObjectHeader": {
+						"Tags": [],
+						"DetailImage": "",
+						"HeadlineText": "{title}",
+						"Subhead": "{ID}",
+						"BodyText": "",
+						"Footnote": "{price}",
+						"Description": "{stock}",
+						"StatusText": "{currency}",
+						"StatusImage": "",
+						"SubstatusImage": "",
+						"SubstatusText": ""
+					},
+					"_Type": "Section.Type.ObjectHeader"
+				},
+				{
+					"KeyAndValues": [
+						{
+							"KeyName": "ID",
+							"Value": "{ID}"
+						},
+						{
+							"KeyName": "title",
+							"Value": "{title}"
+						},
+						{
+							"KeyName": "stock",
+							"Value": "{stock}"
+						},
+						{
+							"KeyName": "price",
+							"Value": "{price}"
+						},
+						{
+							"KeyName": "currency",
+							"Value": "{currency}"
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 2
+					},
+					"MaxItemCount": 1,
+					"_Name": "SectionKeyValue0",
+					"_Type": "Section.Type.KeyValue"
+				}
+			],
+			"DataSubscriptions": [],
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable"
+		}
+	],
+	"_Type": "Page",
+	"_Name": "Books_Detail",
+	"PrefersLargeCaption": true
+}
