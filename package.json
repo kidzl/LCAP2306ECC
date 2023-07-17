@@ -36,6 +36,16 @@
       },
       "auth": {
         "kind": "xsuaa"
+      },
+      "Marketing_Contact": {
+        "kind": "odata-v2",
+        "model": "srv/external/Marketing_Contact",
+        "[production]": {
+          "credentials": {
+            "destination": "apihub_sandbox",
+            "path": "s4hanacloud/sap/opu/odata/sap/API_MKT_CONTACT_SRV;v=0003"
+          }
+        }
       }
     },
     "features": {

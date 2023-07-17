@@ -1,3 +1,4 @@
+using { Marketing_Contact } from './external/Marketing_Contact.cds'; 
 using { LCAPNEW as my } from '../db/schema';
 
 using LCAPNEW from '../db/schema';

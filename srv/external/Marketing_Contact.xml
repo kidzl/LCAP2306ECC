@@ -1,0 +1,1416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="API_MKT_CONTACT_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="MarketingPermission" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactID"/>
+                    <PropertyRef Name="ContactOrigin"/>
+                    <PropertyRef Name="ContactPermissionID"/>
+                    <PropertyRef Name="ContactPermissionOrigin"/>
+                    <PropertyRef Name="MarketingArea"/>
+                    <PropertyRef Name="CommunicationMedium"/>
+                </Key>
+                <Property Name="PermissionUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Permission UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Contact UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Contact Origin" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactPermissionID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Contact: Permission ID" sap:heading="Contact Permission ID" sap:quickinfo="Contact Permission ID">
+                    <Documentation>
+                        <Summary>This is the ID of the contact permission.</Summary>
+                        <LongDescription>The ContactPermissionID and ContactPermissionOrigin properties store marketing permissions.An example is: first.lastname@mail.de</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactPermissionOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Contact: Permission Origin" sap:heading="Contact Permission Origin" sap:quickinfo="Contact Permission Origin">
+                    <Documentation>
+                        <Summary>This is the origin of the contact ID where marketing permissions are stored.</Summary>
+                        <LongDescription>The origin indicates the source of an ID, in other words, where it originated. The ContactPermissionID and ContactPermissionOrigin properties store marketing permissions.You can maintain the origins you use in the Define Origins of Contact ID Customizing activity or in the Origins of Contact ID configuration activity.Examples of origins are EMAIL or MOBILE.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactPermissionOriginName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Contact: Permission Origin Name" sap:heading="Description for Origin of Contact Data" sap:quickinfo="Description for Origin of Interaction Contact Data" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a free text description of the origin.</Summary>
+                        <LongDescription>This is a read-only field.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingArea" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Marketing Area" sap:heading="Marketing Area ID" sap:quickinfo="Marketing Area ID" sap:sortable="false">
+                    <Documentation>
+                        <Summary>This contains the ID of a marketing area.</Summary>
+                        <LongDescription>The marketing area represents an authorization concept in which data access can optionally be controlled based on the responsibilities of the user. Marketing areas can be used to restrict access to instances of an object, such as campaigns, email messages, email  templates, or target groups.Examples of marketing areas are organizational units, product lines, brands, geographical regions, or any other organizational entity.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingAreaName" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:label="Marketing Area Name" sap:heading="Marketing Area Description" sap:quickinfo="Description for Marketing Area" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>The name of the marketing area. For example, Global Marketing Area.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="CommunicationMedium" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Communication Medium">
+                    <Documentation>
+                        <Summary>This is a path or channel used for communication or through which an interaction happened.</Summary>
+                        <LongDescription>Examples of communication media can be EMAIL, PHONE, WEB, and specific social media channels (to be changed!).You can configure communication media in the configuration activity Manage Interaction Content.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CommunicationMediumName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Communication Medium: Name" sap:heading="Communication Medium Description" sap:quickinfo="Description of Communication Medium" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a free text description of a communication medium.</Summary>
+                        <LongDescription>The communication medium describes the channel that a contact used to interact with your company.You can configure communication media in the configuration activity Manage Interaction Content.Examples of communication media are email, phone, text message, or social media.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionUTCDateTime" Type="Edm.DateTimeOffset" Nullable="false" Precision="7" sap:unicode="false" sap:label="Permission: UTC Date/Time" sap:heading="UTC Timestamp" sap:quickinfo="UTC Timestamp for API-Services">
+                    <Documentation>
+                        <Summary>The timestamp refers to the time the interaction took place, not to the time the record was created on the database.</Summary>
+                        <LongDescription>The timestamp must always be UTC time.When you import data, the local timestamp plus the difference to UTC is also allowed. For example, for New York local time 14:00:00, which is 5 hours before UTC, you could import the timestamp as: 2017-12-18T14:00:00-05:00 or 2017-12-18T19:00:00.When data is read, the UTC timestamp is always returned.An alternative UTC OData Format would be:Number of milliseconds since midnight Jan 1, 1970: /Date(1406014140922)/</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionGranted" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Permission Granted" sap:heading="Opt-In" sap:quickinfo="Opt-In for Marketing Permission">
+                    <Documentation>
+                        <Summary>This field indicates whether permission has been granted or not. The permission values can be Y (Yes) or N (No).</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionSourceObject" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Permission: Source Object" sap:heading="Generic Object ID" sap:quickinfo="Generic Object ID">
+                    <Documentation>
+                        <Summary>The ID of the result object, for example, material number.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionSourceObjectType" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Permission: Source Object Type" sap:heading="Generic Object Type" sap:quickinfo="Object Type">
+                    <Documentation>
+                        <Summary>A recommendation data source type that is defined to an ITEM data source class, for example, SAP Commerce Product.</Summary>
+                        <LongDescription>You can use the ItemSourceType entity to enable your customer channel to choose BasketObjectType from a value help.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionSourceSystem" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Permission: Source System" sap:heading="Source System ID" sap:quickinfo="Interaction Source System ID"/>
+                <Property Name="PermissionSourceSystemType" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Permission: Source System Type" sap:heading="Source System Type" sap:quickinfo="Interaction Source System Type">
+                    <Documentation>
+                        <Summary>This field contains the type of source system from which the interaction data came.</Summary>
+                        <LongDescription>The source system type identifies the type of system in which the interaction occurred. Types of source system include web shops, C4C systems or clickstream monitoring tools.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionSourceCommMedium" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Permission: Source Communication Medium" sap:heading="Permission Source Communication Medium" sap:quickinfo="Source Communication Medium">
+                    <Documentation>
+                        <Summary>This is a path or channel used to indicate from which communication medium  a permission or subscription has been created.</Summary>
+                        <LongDescription>You can configure communication media in the configuration app Manage Interaction Content or in Customizing for SAP Marketing under Interactions -&gt; Define Communication Media. Examples of communication media can be EMAIL, PHONE, WEB.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionSourceCommMediumName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Permission: Name of Source Communication Medium" sap:heading="Communication Medium Description" sap:quickinfo="Description of Communication Medium" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a free text description of a communication medium.</Summary>
+                        <LongDescription>The communication medium describes the channel that a contact used to interact with your company.You can configure communication media in the configuration activity Manage Interaction Content.Examples of communication media are email, phone, text message, or social media.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionIsImplicit" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Permission Is Implicit" sap:heading="Implicit" sap:quickinfo="Permission Is Implicit ('X' = yes)" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This indicator shows whether the permission has been granted implicitly or not.</Summary>
+                        <LongDescription>If the system sets this field to TRUE then it is an implicit permission, which is determined by country-specific regulation.If the system sets this field to FALSE the contact has given this permission explicitly.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsConfirmationRequired" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Is Confirmation Required?" sap:heading="Confirmation Is Required" sap:quickinfo="Perm/Subscr. Is Confirmation Required" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This is an indicator showing if a confirmation is required before storing the permission or subscription.</Summary>
+                        <LongDescription>If the parameter is set to TRUE, the permission is stored using the double opt-in or opt-out process.If the property is not specified in the payload or it is set to FALSE the permission is directly stored.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="Last Changed By User" sap:heading="Full Name" sap:quickinfo="Full Name of Person" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This field contains the complete personal name. It is usually generated from the individual name components (without title).</Summary>
+                        <LongDescription>There are two exceptions:The field contents were assembled by converting data from a previous release from the previous title and name fields because the title could not be assigned automatically to a title key . In this case the field CONVERTED ("Status of the field NAME_TEXT") has the value 'X'.The field contents were maintained manually using a supplementary function in dialog, e.g. because the complete name cannot be split into the specified name parts. In this case the field CONVERTED ("Status of the field NAME_TEXT") has the value 'M'.The field CONVERTED ("Status of the field NAME_TEXT") has the value SPACE if neither of the exceptions applies.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:unicode="false" sap:label="Last Change Date/Time" sap:heading="UTC Timestamp" sap:quickinfo="UTC Timestamp for API-Services" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>The timestamp refers to the time the interaction took place, not to the time the record was created on the database.</Summary>
+                        <LongDescription>The timestamp must always be UTC time.When you import data, the local timestamp plus the difference to UTC is also allowed. For example, for New York local time 14:00:00, which is 5 hours before UTC, you could import the timestamp as: 2017-12-18T14:00:00-05:00 or 2017-12-18T19:00:00.When data is read, the UTC timestamp is always returned.An alternative UTC OData Format would be:Number of milliseconds since midnight Jan 1, 1970: /Date(1406014140922)/</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="PermissionNoteText" Type="Edm.String" Nullable="false" MaxLength="1000" sap:unicode="false" sap:label="Permission: Note Text" sap:heading="Note" sap:quickinfo="Marketing Permission Note" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This is a note text.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+            </EntityType>
+            <EntityType Name="MarketingArea" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactOrigin"/>
+                    <PropertyRef Name="ContactID"/>
+                    <PropertyRef Name="InteractionContactMktgArea"/>
+                </Key>
+                <Property Name="ContactOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Origin of Contact" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="External Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactMktgArea" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Marketing Area ID">
+                    <Documentation>
+                        <Summary>This field contains the ID of a marketing area.</Summary>
+                        <LongDescription>The marketing area represents an authorization concept in which data access can optionally be controlled based on the responsibilities of the user. Marketing areas can be used to restrict access to instances of an object, such as campaigns, email messages, email  templates, or target groups.Examples of marketing areas are organizational units, product lines, brands, geographical regions, or any other organizational entity.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactMktgAreaName" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:label="Marketing Area" sap:heading="Marketing Area Description" sap:quickinfo="Description for Marketing Area" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>The name of the marketing area. For example, Global Marketing Area.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactUUID" Type="Edm.Guid" sap:unicode="false" sap:label="UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactAdditionalOriginUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Additional ID UUID" sap:quickinfo="Additional ID UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is an ID that is internally assigned to an additional ID.</Summary>
+                        <LongDescription>Additional IDs are IDs for a contact that are derived from various sources (origins), such as from SAP ERP, Facebook, LinkedIn, or a web shop. Each origin provides one main ID for a contact, and can also provide additional IDs.Examples of additional IDs are: a loyalty card number, an email address, or phone, mobile and fax numbers.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactMktgAreaUUID" Type="Edm.Guid" sap:unicode="false" sap:label="IC Mktg Area UUID" sap:heading="IC Marketing Area UUID" sap:quickinfo="Interaction Contact: Marketing Area UUID for API-Service" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="MarketingLocation" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactOrigin"/>
+                    <PropertyRef Name="ContactID"/>
+                    <PropertyRef Name="MarketingLocationOrigin"/>
+                    <PropertyRef Name="MarketingLocationExternalID"/>
+                </Key>
+                <Property Name="ContactOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Origin of Contact" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="External Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingLocationOrigin" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Origin of Location" sap:heading="Origin of Marketing Location" sap:quickinfo="API: Location Origin">
+                    <Documentation>
+                        <Summary>This is the origin or source system where a marketing location ID originated.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingLocationExternalID" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Location ID" sap:quickinfo="API: Location ID">
+                    <Documentation>
+                        <Summary>This is the external ID of a marketing location.</Summary>
+                        <LongDescription>A marketing location can be any physical or virtual location where a marketing event takes place.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactUUID" Type="Edm.Guid" sap:unicode="false" sap:label="UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactMktgLocUUID" Type="Edm.Guid" sap:unicode="false" sap:label="IC Mktg Loc UUID" sap:heading="IC Marketing Location UUID" sap:quickinfo="Interaction Contact: Marketing Location UUID for API Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the ID that is internally assigned to a marketing location ID.</Summary>
+                        <LongDescription>A marketing location can be any physical or virtual location where a marketing activity can be conducted.Examples of marketing locations are the place where interaction took place, such as a mall or a web shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactAdditionalOriginUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Additional ID UUID" sap:quickinfo="Additional ID UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is an ID that is internally assigned to an additional ID.</Summary>
+                        <LongDescription>Additional IDs are IDs for a contact that are derived from various sources (origins), such as from SAP ERP, Facebook, LinkedIn, or a web shop. Each origin provides one main ID for a contact, and can also provide additional IDs.Examples of additional IDs are: a loyalty card number, an email address, or phone, mobile and fax numbers.</LongDescription>
+                    </Documentation>
+                </Property>
+            </EntityType>
+            <EntityType Name="Contact" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactUUID"/>
+                </Key>
+                <Property Name="ContactUUID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IdentityIsRemoved" Type="Edm.Boolean" sap:unicode="false" sap:label="Identity Is Removed" sap:quickinfo="Identity Is Removed for API Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This indicator specifies that all attributes that can be used to identify an interaction contact have been removed.</Summary>
+                        <LongDescription>When a contact requests that no further data should be tracked, a report removes the identifying attributes from the database (such as name, internal ID, phone number).</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="BirthDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Date of Birth" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This field contains the contact's date of birth.</Summary>
+                        <LongDescription>The date of birth must be in the following format: YYYY-MM-DDT00:00:00.For example: 2017-10-01T00:00:00</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsMarkedForDeletion" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Marked for Del." sap:heading="Is Marked for Deletion" sap:quickinfo="Is Marked for Deletion for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Contact is flagged for deletion</Summary>
+                        <LongDescription>Indicator that shows that a contact has been flagged for deletion. Contacts can be flagged for deletion by running the application job Flag Contacts for Deletion. Flagged contacts can be subsequently deleted by running the application job Delete Flagged Contacts.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsConsumer" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Consumer" sap:quickinfo="Is Consumer for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This indicator identifies the business relationship of an interaction contact to your company. It flags the contact as a consumer (B2C).</Summary>
+                        <LongDescription>A consumer is a person who has purchased something from your company as a private person.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsContactPerson" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Contact" sap:quickinfo="Is Contact for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This indicator identifies the business relationship of an interaction contact to your company. It flags the contact as a corporate contact (B2B).</Summary>
+                        <LongDescription>A corporate contact is a representative of a corporate account who has interacted with your company.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="Latitude" Type="Edm.Decimal" Precision="20" Scale="10" sap:unicode="false" sap:label="Latitude" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>The latitude of where an interaction occurs.</Summary>
+                        <LongDescription>Use this field to note the latitude of the geographic location where an interaction takes place.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:unicode="false" sap:label="Last Change Date Time" sap:quickinfo="Last Change Date Time for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the date on which the object data was last changed.</Summary>
+                        <LongDescription>This field contains the timestamp indicating when object data was last changed.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactImageURL" Type="Edm.String" MaxLength="1000" sap:unicode="false" sap:label="Image URL" sap:quickinfo="Image URL for API-Service" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This field contains the URL of an image, for example, an image of a product.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Last Changed By User" sap:quickinfo="Last Changed By User for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the name of the user who last changed the contact data.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="Longitude" Type="Edm.Decimal" Precision="20" Scale="10" sap:unicode="false" sap:label="Longitude" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:unicode="false" sap:label="Creation Date Time" sap:quickinfo="Creation Date Time for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the timestamp indicating when the contact was created.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Created By User" sap:quickinfo="Created By User for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Indicates the User ID of the API service creator.</Summary>
+                        <LongDescription>To hold the value of the created by user's ID of a campaign.User ID of the user.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SpatialReferenceSystem" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Spatial Ref ID" sap:heading="Spatial Reference Identifier" sap:quickinfo="Spatial Reference Identifier" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CorporateAccountUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Corporate Account" sap:heading="Corporate Account UUID" sap:quickinfo="Corporate Account UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the corporate account UUID (universally unique identifier).</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a corporate account when the corporate account is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsMainContact" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Main Contact" sap:quickinfo="Is Main Contact for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This indicator flags a contact as the main contact.</Summary>
+                        <LongDescription>This flag indicates that a contact is assigned as the main contact person for a corporate account.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="FullName" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="Name" sap:quickinfo="Full Name of Interaction Contact" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This free text field contains the contact's full name.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="First Name" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>First name of a natural person</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Last name" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Surname of a natural person</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="Department" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Department" sap:quickinfo="Contact Person Department" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a key representing the business department of your interaction contact.</Summary>
+                        <LongDescription>This field contains an alphanumber key of maximum 4 characters representing a department.You can define departments for your contacts in the configuration activity Define Departments for Contacts. User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples of departments are HR, Controlling, Production, or Financial Department.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="DepartmentName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Department" sap:quickinfo="Description of Person Department" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a free text describing the business department of your interaction contact.</Summary>
+                        <LongDescription>You can define departments for your contacts in the configuration activity Define Departments for Contacts. User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples of departments are HR, Controlling, Production, or Financial Department.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="Function" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Function" sap:heading="Function of Contact" sap:quickinfo="Function of Contact" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is an alphanumeric key that identifies a business function.</Summary>
+                        <LongDescription>This field contains an alphanumber key of maximum 4 characters representing a function.You can define functions for your contacts in the configuration activity Define Functions for Contacts.User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples of functions are buyer, head of sales, or personnel manager.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactFunctionName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Function" sap:heading="Function of Contact" sap:quickinfo="Function of Contact" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This field contains a free text describing the business function or role of an interaction contact within an organization.</Summary>
+                        <LongDescription>You can define functions for your contacts in the configuration activity Define Functions for Contacts.User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples of functions are buyer, head of sales, or personnel manager.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MaritalStatus" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Marital Status" sap:heading="Marital Stat." sap:quickinfo="Marital Status of Business Partner" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>For business partners in the category 'Person', you can state the marital status. This is for information purposes only.</Summary>
+                        <LongDescription>SingleMarriedDivorced</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MaritalStatusName" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Marital Status" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>City name as part of the address.</Summary>
+                        <LongDescription>The city name is saved redundantly in another database field in upper- case letters, for search help.If the Postal regional structure ('city file') is active, the city name is checked against the Cities defined in the regional structure.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Street" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Street name as part of the address.</Summary>
+                        <LongDescription>The street name is saved, redundantly in upper case in another database field, for search help purposes.There are other fields for address parts which can be printed above or below the street. See Print the Street address.The house number and other supplements are usually maintained in their own fields. See Formatting the Street line.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="AddressHouseNumber" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="House Number" sap:heading="House No." sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>House number as part of an address.</Summary>
+                        <LongDescription>It is printed in the Street line.Other supplementary street information can be entered in the House number supplement or one of the Street2, Street3, Street4 or Street5 fields. See Print the Street address.A house number (e.g. 117) or a house number with supplement (e.g. 117a), or a house number range (e.g. 16-20), can be maintained in this field.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Language" sap:quickinfo="Language Key" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>The language key indicates</Summary>
+                        <LongDescription>- the language in which texts are displayed,- the language in which you enter texts,- the language in which the system prints texts.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="LanguageName" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Name" sap:heading="Name of Language" sap:quickinfo="Name of Language" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:unicode="false" sap:label="E-Mail Address" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Phone" sap:quickinfo="Phone for API-Service" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MobileNumber" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Mobile" sap:quickinfo="Mobile for API-Service" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Fax" sap:quickinfo="Fax for API-Service" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasMktgPermissionForDirectMail" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Postal Opt-In" sap:heading="Opt-In for Postal Address Contact" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Country" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>The two-digit code that represents the country. For example, CA</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="CountryName" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Country Long Name" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This field contains the long name of a country.</Summary>
+                        <LongDescription>This is free text for the country of the interaction contact.Custom entries must be mapped to SAP internal IDs in the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="AddressRegion" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Region" sap:heading="Rg" sap:quickinfo="Region (State, Province, County)" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>In some countries, the region forms part of the address. The meaning depends on the country.</Summary>
+                        <LongDescription>The automatic address formatting function prints the region in addresses in the USA, Canada, Italy, Brazil or Australia, and the county in Great Britain.For more information, see the examples in the documentation on the Address Layout Key.Meaning of the regional code in ...Australia       -&gt;  ProvinceBrazil          -&gt;  StateCanada          -&gt;  ProvinceGermany         -&gt;  StateGreat Britain   -&gt;  CountyItaly           -&gt;  ProvinceJapan           -&gt;  PrefectureSwitzerland     -&gt;  CantonUSA             -&gt;  State</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="RegionName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Region" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Region code of the campaign performance measures.</Summary>
+                        <LongDescription>The mapping of external values to internal codes is maintained with the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="GenderCode" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Gender" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a key that represents the gender of a contact.</Summary>
+                        <LongDescription>This field contains fixed values that represent the gender of a contact. The fixed values are: 1 = Male; 2 = Female; Space = Gender not known.User-defined values can be defined in the structure CUAN_S_API_MKT_CNTCT_ORIGIN_D in SEX_FT. User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="GenderCodeName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Gender" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>A free text field that specifies the gender of a contact.</Summary>
+                        <LongDescription>This field contains user-definable gender names.User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactPostalCode" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Postal Code" sap:heading="Post. Code" sap:quickinfo="City Postal Code" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Postal code as part of the address</Summary>
+                        <LongDescription>If different postal codes are maintained for the PO Box and Street address of an address, this field contains the Street address postal code.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Title" sap:heading="Key" sap:quickinfo="Form-of-Address Key" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Key for form of address text.</Summary>
+                        <LongDescription>You can also define a form of address text in Customizing.The form of address text can be maintained in different languages.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="FormOfAddressName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Title" sap:quickinfo="Title text" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Possible titles are stored in a check table. They are language-dependent.</Summary>
+                        <LongDescription>Choose the title from the entries in the drop down list box.The title is displayed in text form in the screen field in the logon language, and its key is stored in the database.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="WebsiteURL" Type="Edm.String" MaxLength="1000" sap:unicode="false" sap:label="Website URL" sap:quickinfo="Website URL for API-Service" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This field contains the URL of a web site.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="ValidationStatus" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Validat. Status" sap:heading="Validation Status" sap:quickinfo="Validation Status Code" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a two-digit code representing a status that indicates the level of verification for a contact’s information.</Summary>
+                        <LongDescription>Predelivered validation statuses and codes are:Space - Anonymous:Information about the contact is not verified. For example, there was just a click on a web site.10 - Self-Identified:The contact has entered, for example, name and address in a web form, but the information hasn't yet been verified.20 - Qualified:The contact has registered on the web site and verified the details by clicking a link in a verification email, for example.30 - Business Partner:The contact is stored in the productive SAP CRM or SAP ERP system.You cannot change the predelivered codes but you can edit the descriptive text for a status and add new validation statuses in the configuration app Validation Statuses. Validation statuses are displayed as contact levels in the Contact Profile.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ValidationStatusName" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Val. Stat. Dc." sap:heading="Validation Status Description" sap:quickinfo="Description for Validation Status Code" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a status that indicates the level of verification for a contact’s information.</Summary>
+                        <LongDescription>The more master data that is maintained for a contact, the higher the validation status.Possible validation statuses are:Anonymous:Information about the contact is not verified. For example, the contact merely clicked on a web site.Self-Identified:The contact has entered, for example, name and address in a web form, but the information is not yet verified.Qualified:The contact has registered on the web site and verified the details by clicking a confirmation link in a verification email, for example.Business Partner:The contact is stored in the productive SAP CRM or SAP ERP system.You cannot change the predelivered codes but you can edit the descriptive text for a status and add new validation statuses in the configuration app Validation Statuses. Validation statuses are displayed as contact levels in the Contact Profile.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="Industry" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Industry" sap:heading="Indus." sap:quickinfo="Industry Key" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is an alphanumeric key that identifies an industry.</Summary>
+                        <LongDescription>This field contains an alphanumber key of maximum 4 characters representing an industry.You can create custom entries in the configuration activity Industries for Contacts. User-defined values must be mapped to SAP internal keys in the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IndustryName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Industry" sap:quickinfo="Description of Industry Key" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This field contains a free text describing the industry of your interaction contact.</Summary>
+                        <LongDescription>You can define industries for your contacts in the configuration activity Industries for Contacts. User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples are automotive, chemicals, energy, or construction.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CorporateAccountName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Corp Account Name" sap:heading="Corporate Account Name" sap:quickinfo="Corporate Account Name for API Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a free text defining the name of the company of your interaction contacts.</Summary>
+                        <LongDescription>This free text information cannot be used to find a corporate account.  If you want to associate a contact with a corporate account, you have to use the attributes CorporateAccoutOrigin and CorporateAccountID.</LongDescription>
+                    </Documentation>
+                </Property>
+                <NavigationProperty Name="MarketingPermissions" Relationship="API_MKT_CONTACT_SRV.ContactMarketingPermission" FromRole="FromRole_ContactMarketingPermission" ToRole="ToRole_ContactMarketingPermission"/>
+                <NavigationProperty Name="MarketingSubscriptions" Relationship="API_MKT_CONTACT_SRV.ContactMarketingSubscription" FromRole="FromRole_ContactMarketingSubscription" ToRole="ToRole_ContactMarketingSubscription"/>
+                <NavigationProperty Name="MarketingAreas" Relationship="API_MKT_CONTACT_SRV.ContactMarketingArea" FromRole="FromRole_ContactMarketingArea" ToRole="ToRole_ContactMarketingArea"/>
+                <NavigationProperty Name="MarketingLocations" Relationship="API_MKT_CONTACT_SRV.ContactMarketingLocation" FromRole="FromRole_ContactMarketingLocation" ToRole="ToRole_ContactMarketingLocation"/>
+                <NavigationProperty Name="MarketingAttributes" Relationship="API_MKT_CONTACT_SRV.ContactMarketingAttribute" FromRole="FromRole_ContactMarketingAttribute" ToRole="ToRole_ContactMarketingAttribute"/>
+                <NavigationProperty Name="AdditionalIDs" Relationship="API_MKT_CONTACT_SRV.ContactAdditionalID" FromRole="FromRole_ContactAdditionalID" ToRole="ToRole_ContactAdditionalID"/>
+                <NavigationProperty Name="ContactOriginData" Relationship="API_MKT_CONTACT_SRV.ContactContactOriginData" FromRole="FromRole_ContactContactOriginData" ToRole="ToRole_ContactContactOriginData"/>
+                <NavigationProperty Name="AccountTeamMembers" Relationship="API_MKT_CONTACT_SRV.ContactAccountTeamMember" FromRole="FromRole_ContactAccountTeamMember" ToRole="ToRole_ContactAccountTeamMember"/>
+            </EntityType>
+            <EntityType Name="ContactOriginData" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactOrigin"/>
+                    <PropertyRef Name="ContactID"/>
+                </Key>
+                <Property Name="ContactOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Origin of Contact" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="External Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ValidationStatus" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Validat. Status" sap:heading="Validation Status" sap:quickinfo="Validation Status Code">
+                    <Documentation>
+                        <Summary>This is a two-digit code representing a status that indicates the level of verification for a contact’s information.</Summary>
+                        <LongDescription>Predelivered validation statuses and codes are:Space - Anonymous:Information about the contact is not verified. For example, there was just a click on a web site.10 - Self-Identified:The contact has entered, for example, name and address in a web form, but the information hasn't yet been verified.20 - Qualified:The contact has registered on the web site and verified the details by clicking a link in a verification email, for example.30 - Business Partner:The contact is stored in the productive SAP CRM or SAP ERP system.You cannot change the predelivered codes but you can edit the descriptive text for a status and add new validation statuses in the configuration app Validation Statuses. Validation statuses are displayed as contact levels in the Contact Profile.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ValidationStatusName" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Val. Stat. Dc." sap:heading="Validation Status Description" sap:quickinfo="Description for Validation Status Code" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a status that indicates the level of verification for a contact’s information.</Summary>
+                        <LongDescription>The more master data that is maintained for a contact, the higher the validation status.Possible validation statuses are:Anonymous:Information about the contact is not verified. For example, the contact merely clicked on a web site.Self-Identified:The contact has entered, for example, name and address in a web form, but the information is not yet verified.Qualified:The contact has registered on the web site and verified the details by clicking a confirmation link in a verification email, for example.Business Partner:The contact is stored in the productive SAP CRM or SAP ERP system.You cannot change the predelivered codes but you can edit the descriptive text for a status and add new validation statuses in the configuration app Validation Statuses. Validation statuses are displayed as contact levels in the Contact Profile.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsEndOfPurposeBlocked" Type="Edm.Boolean" sap:unicode="false" sap:label="End of Purpose" sap:heading="EoP" sap:quickinfo="Object's Purpose Has Ended ('X' = Yes)" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This flag indicates that the end-of-purpose (EoP) date has been reached for contact data.</Summary>
+                        <LongDescription>The EoP date is the point in time when the processing of a set of personal data is no longer required for the primary business purpose. After the EoP date has been reached, the data is blocked and can only be accessed by users with special authorizations (for example, tax auditors).</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="BirthDate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date of Birth">
+                    <Documentation>
+                        <Summary>This field contains the contact's date of birth.</Summary>
+                        <LongDescription>The date of birth must be in the following format: YYYY-MM-DDT00:00:00.For example: 2017-10-01T00:00:00</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="OriginDataLastChgUTCDateTime" Type="Edm.DateTimeOffset" Nullable="false" Precision="7" sap:unicode="false" sap:label="Origin Timestamp" sap:heading="Origin Timestamp UTC" sap:quickinfo="Origin Timestamp UTC">
+                    <Documentation>
+                        <Summary>This is the date on which the data was last changed.</Summary>
+                        <LongDescription>This information is derived from the origin. It specifies when data was last changed in the source system.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsConsumer" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Consumer" sap:quickinfo="Is Consumer for API-Service">
+                    <Documentation>
+                        <Summary>This indicator identifies the business relationship of an interaction contact to your company. It flags the contact as a consumer (B2C).</Summary>
+                        <LongDescription>A consumer is a person who has purchased something from your company as a private person.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsContactPerson" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Contact" sap:quickinfo="Is Contact for API-Service">
+                    <Documentation>
+                        <Summary>This indicator identifies the business relationship of an interaction contact to your company. It flags the contact as a corporate contact (B2B).</Summary>
+                        <LongDescription>A corporate contact is a representative of a corporate account who has interacted with your company.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="Latitude" Type="Edm.Decimal" Precision="20" Scale="10" sap:unicode="false" sap:label="Latitude">
+                    <Documentation>
+                        <Summary>The latitude of where an interaction occurs.</Summary>
+                        <LongDescription>Use this field to note the latitude of the geographic location where an interaction takes place.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:unicode="false" sap:label="Last Change Date Time" sap:quickinfo="Last Change Date Time for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the date on which the object data was last changed.</Summary>
+                        <LongDescription>This field contains the timestamp indicating when object data was last changed.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactImageURL" Type="Edm.String" MaxLength="1000" sap:unicode="false" sap:label="Image URL" sap:quickinfo="Image URL for API-Service" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This field contains the URL of an image, for example, an image of a product.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Last Changed By User" sap:quickinfo="Last Changed By User for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the name of the user who last changed the contact data.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="Longitude" Type="Edm.Decimal" Precision="20" Scale="10" sap:unicode="false" sap:label="Longitude"/>
+                <Property Name="ContactUUID" Type="Edm.Guid" sap:unicode="false" sap:label="UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:unicode="false" sap:label="Creation Date Time" sap:quickinfo="Creation Date Time for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the timestamp indicating when the contact was created.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Created By User" sap:quickinfo="Created By User for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>Indicates the User ID of the API service creator.</Summary>
+                        <LongDescription>To hold the value of the created by user's ID of a campaign.User ID of the user.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SpatialReferenceSystem" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Spatial Ref ID" sap:heading="Spatial Reference Identifier" sap:quickinfo="Spatial Reference Identifier"/>
+                <Property Name="CorporateAccountUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Corporate Account" sap:heading="Corporate Account UUID" sap:quickinfo="Corporate Account UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the corporate account UUID (universally unique identifier).</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a corporate account when the corporate account is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsMainContact" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Main Contact" sap:quickinfo="Is Main Contact for API-Service">
+                    <Documentation>
+                        <Summary>This indicator flags a contact as the main contact.</Summary>
+                        <LongDescription>This flag indicates that a contact is assigned as the main contact person for a corporate account.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="FullName" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="Name" sap:quickinfo="Full Name of Interaction Contact">
+                    <Documentation>
+                        <Summary>This free text field contains the contact's full name.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="First Name">
+                    <Documentation>
+                        <Summary>First name of a natural person</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Last Name">
+                    <Documentation>
+                        <Summary>Surname of a natural person</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="Department" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Department" sap:quickinfo="Contact Person Department">
+                    <Documentation>
+                        <Summary>This is a key representing the business department of your interaction contact.</Summary>
+                        <LongDescription>This field contains an alphanumber key of maximum 4 characters representing a department.You can define departments for your contacts in the configuration activity Define Departments for Contacts. User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples of departments are HR, Controlling, Production, or Financial Department.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="DepartmentName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Department" sap:quickinfo="Description of Person Department">
+                    <Documentation>
+                        <Summary>This is a free text describing the business department of your interaction contact.</Summary>
+                        <LongDescription>You can define departments for your contacts in the configuration activity Define Departments for Contacts. User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples of departments are HR, Controlling, Production, or Financial Department.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="Function" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Function" sap:heading="Function of Contact" sap:quickinfo="Function of Contact">
+                    <Documentation>
+                        <Summary>This is an alphanumeric key that identifies a business function.</Summary>
+                        <LongDescription>This field contains an alphanumber key of maximum 4 characters representing a function.You can define functions for your contacts in the configuration activity Define Functions for Contacts.User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples of functions are buyer, head of sales, or personnel manager.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactFunctionName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Function" sap:heading="Function of Contact" sap:quickinfo="Function of Contact">
+                    <Documentation>
+                        <Summary>This field contains a free text describing the business function or role of an interaction contact within an organization.</Summary>
+                        <LongDescription>You can define functions for your contacts in the configuration activity Define Functions for Contacts.User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples of functions are buyer, head of sales, or personnel manager.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MaritalStatus" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Marital Status" sap:heading="Marital Stat." sap:quickinfo="Marital Status of Business Partner">
+                    <Documentation>
+                        <Summary>For business partners in the category 'Person', you can state the marital status. This is for information purposes only.</Summary>
+                        <LongDescription>SingleMarriedDivorced</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MaritalStatusName" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Marital Status"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="City">
+                    <Documentation>
+                        <Summary>City name as part of the address.</Summary>
+                        <LongDescription>The city name is saved redundantly in another database field in upper- case letters, for search help.If the Postal regional structure ('city file') is active, the city name is checked against the Cities defined in the regional structure.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Street">
+                    <Documentation>
+                        <Summary>Street name as part of the address.</Summary>
+                        <LongDescription>The street name is saved, redundantly in upper case in another database field, for search help purposes.There are other fields for address parts which can be printed above or below the street. See Print the Street address.The house number and other supplements are usually maintained in their own fields. See Formatting the Street line.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="AddressHouseNumber" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="House Number" sap:heading="House No.">
+                    <Documentation>
+                        <Summary>House number as part of an address.</Summary>
+                        <LongDescription>It is printed in the Street line.Other supplementary street information can be entered in the House number supplement or one of the Street2, Street3, Street4 or Street5 fields. See Print the Street address.A house number (e.g. 117) or a house number with supplement (e.g. 117a), or a house number range (e.g. 16-20), can be maintained in this field.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Language" sap:quickinfo="Language Key">
+                    <Documentation>
+                        <Summary>The language key indicates</Summary>
+                        <LongDescription>- the language in which texts are displayed,- the language in which you enter texts,- the language in which the system prints texts.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="LanguageName" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Name" sap:heading="Name of Language" sap:quickinfo="Name of Language"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:unicode="false" sap:label="E-Mail Address"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Phone" sap:quickinfo="Phone for API-Service"/>
+                <Property Name="MobileNumber" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Mobile" sap:quickinfo="Mobile for API-Service"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Fax" sap:quickinfo="Fax for API-Service"/>
+                <Property Name="HasMktgPermissionForDirectMail" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Postal Opt-In" sap:heading="Opt-In for Postal Address Contact"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Country" sap:heading="Ctr" sap:quickinfo="Country Key">
+                    <Documentation>
+                        <Summary>The country key contains information which the system uses to check entries such as the length of the postal code or bank account number.</Summary>
+                        <LongDescription>The two-character ISO code in accordance with ISO 3166, which is delivered by SAP as a default, is usually used.It could also be the vehicle license plate country-code or a typical country key, for example, in Germany the Federal statistics office key.The country keys are determined at system installation in the global settings.The definition of the country key in the SAP system does not have to match political or government entities.Since the country key does not have to correspond to the ISO code in all installations, programs that differ according to certain values of the country key cannot query the country key T005-LAND1, but have to program based on the ISO code T005 INTCA.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CountryName" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Country Long Name">
+                    <Documentation>
+                        <Summary>This field contains the long name of a country.</Summary>
+                        <LongDescription>This is free text for the country of the interaction contact.Custom entries must be mapped to SAP internal IDs in the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="AddressRegion" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Region" sap:heading="Rg" sap:quickinfo="Region (State, Province, County)">
+                    <Documentation>
+                        <Summary>In some countries, the region forms part of the address. The meaning depends on the country.</Summary>
+                        <LongDescription>The automatic address formatting function prints the region in addresses in the USA, Canada, Italy, Brazil or Australia, and the county in Great Britain.For more information, see the examples in the documentation on the Address Layout Key.Meaning of the regional code in ...Australia       -&gt;  ProvinceBrazil          -&gt;  StateCanada          -&gt;  ProvinceGermany         -&gt;  StateGreat Britain   -&gt;  CountyItaly           -&gt;  ProvinceJapan           -&gt;  PrefectureSwitzerland     -&gt;  CantonUSA             -&gt;  State</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="RegionName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Region">
+                    <Documentation>
+                        <Summary>Region code of the campaign performance measures.</Summary>
+                        <LongDescription>The mapping of external values to internal codes is maintained with the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="GenderCode" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Gender">
+                    <Documentation>
+                        <Summary>This is a key that represents the gender of a contact.</Summary>
+                        <LongDescription>This field contains fixed values that represent the gender of a contact. The fixed values are: 1 = Male; 2 = Female; Space = Gender not known.User-defined values can be defined in the structure CUAN_S_API_MKT_CNTCT_ORIGIN_D in SEX_FT. User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="GenderCodeName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Gender">
+                    <Documentation>
+                        <Summary>A free text field that specifies the gender of a contact.</Summary>
+                        <LongDescription>This field contains user-definable gender names.User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactPostalCode" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Postal Code" sap:heading="Post. Code" sap:quickinfo="City Postal Code">
+                    <Documentation>
+                        <Summary>Postal code as part of the address</Summary>
+                        <LongDescription>If different postal codes are maintained for the PO Box and Street address of an address, this field contains the Street address postal code.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Title" sap:heading="Key" sap:quickinfo="Form-of-Address Key">
+                    <Documentation>
+                        <Summary>Key for form of address text.</Summary>
+                        <LongDescription>You can also define a form of address text in Customizing.The form of address text can be maintained in different languages.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="FormOfAddressName" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Title" sap:quickinfo="Title text">
+                    <Documentation>
+                        <Summary>Possible titles are stored in a check table. They are language-dependent.</Summary>
+                        <LongDescription>Choose the title from the entries in the drop down list box.The title is displayed in text form in the screen field in the logon language, and its key is stored in the database.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="WebsiteURL" Type="Edm.String" MaxLength="1000" sap:unicode="false" sap:label="Website URL" sap:quickinfo="Website URL for API-Service" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This field contains the URL of a web site.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="Industry" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Industry" sap:heading="Indus." sap:quickinfo="Industry Key">
+                    <Documentation>
+                        <Summary>This is an alphanumeric key that identifies an industry.</Summary>
+                        <LongDescription>This field contains an alphanumber key of maximum 4 characters representing an industry.You can create custom entries in the configuration activity Industries for Contacts. User-defined values must be mapped to SAP internal keys in the Map Free Texts app.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IndustryName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Industry" sap:quickinfo="Description of Industry Key">
+                    <Documentation>
+                        <Summary>This field contains a free text describing the industry of your interaction contact.</Summary>
+                        <LongDescription>You can define industries for your contacts in the configuration activity Industries for Contacts. User-defined entries must be mapped to SAP internal keys in the Map Free Texts app.Examples are automotive, chemicals, energy, or construction.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CorporateAccountName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Corp Account Name" sap:heading="Corporate Account Name" sap:quickinfo="Corporate Account Name for API Service">
+                    <Documentation>
+                        <Summary>This is a free text defining the name of the company of your interaction contacts.</Summary>
+                        <LongDescription>This free text information cannot be used to find a corporate account.  If you want to associate a contact with a corporate account, you have to use the attributes CorporateAccoutOrigin and CorporateAccountID.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CorporateAccountOrigin" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Origin of Contact" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CorporateAccountID" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="External Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsObsolete" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Obsolete" sap:quickinfo="Is Obsolete for API-Service" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This indicator specifies that an interaction contact is obsolete and no longer valid.</Summary>
+                        <LongDescription>This flag is appended to a contact to indicate that the contact was deleted or is obsolete in the source system.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="TrackingID" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Tracking ID" sap:heading="SAP Tracking ID" sap:quickinfo="SAP Tracking ID">
+                    <Documentation>
+                        <Summary>This is an outbound ID that is automatically generated for every email sent.</Summary>
+                        <LongDescription>The tracking ID is used to enable tracking of email events, for example, email opened or link clicked in email.If provided, the tracking ID can be reused in this context to uniquely match and merge contacts.</LongDescription>
+                    </Documentation>
+                </Property>
+                <NavigationProperty Name="MarketingSubscriptions" Relationship="API_MKT_CONTACT_SRV.ContactOriginDataMarketingSubscription" FromRole="FromRole_ContactOriginDataMarketingSubscription" ToRole="ToRole_ContactOriginDataMarketingSubscription"/>
+                <NavigationProperty Name="MarketingPermissions" Relationship="API_MKT_CONTACT_SRV.ContactOriginDataMarketingPermission" FromRole="FromRole_ContactOriginDataMarketingPermission" ToRole="ToRole_ContactOriginDataMarketingPermission"/>
+                <NavigationProperty Name="MarketingAreas" Relationship="API_MKT_CONTACT_SRV.ContactOriginDataMarketingArea" FromRole="FromRole_ContactOriginDataMarketingArea" ToRole="ToRole_ContactOriginDataMarketingArea"/>
+                <NavigationProperty Name="MarketingLocations" Relationship="API_MKT_CONTACT_SRV.ContactOriginDataMarketingLocation" FromRole="FromRole_ContactOriginDataMarketingLocation" ToRole="ToRole_ContactOriginDataMarketingLocation"/>
+                <NavigationProperty Name="MarketingAttributes" Relationship="API_MKT_CONTACT_SRV.ContactOriginDataMarketingAttribute" FromRole="FromRole_ContactOriginDataMarketingAttribute" ToRole="ToRole_ContactOriginDataMarketingAttribute"/>
+                <NavigationProperty Name="AdditionalIDs" Relationship="API_MKT_CONTACT_SRV.ContactOriginDataAdditionalID" FromRole="FromRole_ContactOriginDataAdditionalID" ToRole="ToRole_ContactOriginDataAdditionalID"/>
+            </EntityType>
+            <EntityType Name="AdditionalID" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactOrigin"/>
+                    <PropertyRef Name="ContactID"/>
+                    <PropertyRef Name="InteractionContactAdditionalOrigin"/>
+                    <PropertyRef Name="InteractionContactAdditionalExternalID"/>
+                </Key>
+                <Property Name="ContactOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Origin of Contact" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="External Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactAdditionalOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Origin of Contact" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactAdditionalExternalID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="External Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="InteractionContactAdditionalOriginUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Additional ID UUID" sap:quickinfo="Additional ID UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is an ID that is internally assigned to an additional ID.</Summary>
+                        <LongDescription>Additional IDs are IDs for a contact that are derived from various sources (origins), such as from SAP ERP, Facebook, LinkedIn, or a web shop. Each origin provides one main ID for a contact, and can also provide additional IDs.Examples of additional IDs are: a loyalty card number, an email address, or phone, mobile and fax numbers.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactUUID" Type="Edm.Guid" sap:unicode="false" sap:label="UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IntactnContactAddlIDIsInvalid" Type="Edm.Boolean" sap:unicode="false" sap:label="Invalid" sap:quickinfo="Object is invalid ('X' = yes)" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="MarketingAreas" Relationship="API_MKT_CONTACT_SRV.AdditionalIDMarketingArea" FromRole="FromRole_AdditionalIDMarketingArea" ToRole="ToRole_AdditionalIDMarketingArea"/>
+            </EntityType>
+            <EntityType Name="MarketingAttribute" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactOrigin"/>
+                    <PropertyRef Name="ContactID"/>
+                    <PropertyRef Name="MarketingAttributeCategory"/>
+                    <PropertyRef Name="MarketingAttributeValue"/>
+                </Key>
+                <Property Name="ContactOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Origin of Contact" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="External Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingAttributeCategory" Type="Edm.String" Nullable="false" MaxLength="75" sap:unicode="false" sap:label="Mkt. Category" sap:heading="Marketing Category" sap:quickinfo="Category for Marketing Attributes">
+                    <Documentation>
+                        <Summary>This field contains a free text description for a classification of marketing attributes.</Summary>
+                        <LongDescription>You can define marketing attribute categories that can be assigned to customers, for instance, to store information about their hobbies or education history.Examples of marketing attribute categories are Sports, Languages, Education History.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingAttributeValue" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Mkt. Value" sap:heading="Marketing Value" sap:quickinfo="Value for Marketing Attributes">
+                    <Documentation>
+                        <Summary>This field contains a free text description for a marketing attribute.</Summary>
+                        <LongDescription>You can define marketing attribute categories that can be assigned to customers, for instance, to store information in the form of attributes about their hobbies or education history.Examples of marketing attributes for the category Sports are Soccer, Baseball, or Skiing.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingAttributeCategoryUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Marketing Attr. Cat" sap:heading="Marketing Attribute Category UUID" sap:quickinfo="Marketing Attribute Category UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is an ID that is internally assigned to a marketing attribute category.</Summary>
+                        <LongDescription>A marketing attribute category is a free text description for a classification of marketing attributes. You can define marketing attribute categories that can be assigned to contacts, for instance, to store information about their hobbies or education history.Examples of marketing attribute categories are Sports, Languages, Education History.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingAttributeUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Marketing Attribute" sap:heading="Marketing Attribute UUID" sap:quickinfo="Marketing Attribute UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This field contains an internally assigned ID for a marketing attribute.</Summary>
+                        <LongDescription>You can define marketing attribute categories that can be assigned to contacts, for instance, to store information in the form of attributes about their hobbies or education history.Examples of marketing attributes for the category Sports are Soccer, Baseball, or Skiing.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactUUID" Type="Edm.Guid" sap:unicode="false" sap:label="UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="MarketingAttributeCategoryName" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Mkt. Category" sap:heading="Marketing Category Description" sap:quickinfo="Marketing Attribute Category Description" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="AccountTeamMember" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactOrigin"/>
+                    <PropertyRef Name="ContactID"/>
+                    <PropertyRef Name="TeamMemberID"/>
+                    <PropertyRef Name="Role"/>
+                </Key>
+                <Property Name="ContactOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Origin of Contact" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="External Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="TeamMemberID" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Team Member ID" sap:quickinfo="Team Member ID for API-Service">
+                    <Documentation>
+                        <Summary>This is the ID of an account team member. In SAP Marketing Cloud, it refers to the employee ID. In SAP Marketing, it refers to the user ID.</Summary>
+                        <LongDescription>An account team member is an internal employee who is assigned to perform a specific service for a customer as part of the account team. For example, one employee is assigned to support the customer as Account Executive, another is assigned in the role of Sales Representative.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="Role" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Team Member Role">
+                    <Documentation>
+                        <Summary>This describes the role of an account team member.</Summary>
+                        <LongDescription>An account team member is an internal employee who is assigned to perform a specific service for a customer as part of the account team.For example, one employee is assigned to support the customer as Account Executive, another is assigned in the role of Sales Representative.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="TeamMemberUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Account Team Member" sap:heading="Account Team Member UUID" sap:quickinfo="Account Team Member UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>The UUID of an account team member</Summary>
+                        <LongDescription>This field contains the UUID of an account team member, which is internally assigned when the account team member is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactUUID" Type="Edm.Guid" sap:unicode="false" sap:label="UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsOwner" Type="Edm.Boolean" sap:unicode="false" sap:label="Is Owner" sap:quickinfo="Is Owner for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This indicator specifies that a team member is assigned as the account owner.</Summary>
+                        <LongDescription>The account owner is the account team member who acts as the main employee responsible for the account.</LongDescription>
+                    </Documentation>
+                </Property>
+            </EntityType>
+            <EntityType Name="MarketingSubscription" sap:content-version="3">
+                <Key>
+                    <PropertyRef Name="ContactID"/>
+                    <PropertyRef Name="ContactOrigin"/>
+                    <PropertyRef Name="ContactSubscriptionID"/>
+                    <PropertyRef Name="ContactSubscriptionOrigin"/>
+                    <PropertyRef Name="CommunicationMedium"/>
+                    <PropertyRef Name="SubscriptionTopic"/>
+                </Key>
+                <Property Name="SubscriptionUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Subscription UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactUUID" Type="Edm.Guid" sap:unicode="false" sap:label="Contact UUID" sap:heading="Universally Unique Identifier" sap:quickinfo="UUID for API-Service" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is the UUID (universally unique identifier) of the interaction contact.</Summary>
+                        <LongDescription>This field contains the UUID, which is internally assigned to a contact or corporate account when it is created.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Contact ID" sap:heading="Ext. Interaction Contact Data ID" sap:quickinfo="External ID of Interaction Contact Data" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This is the external ID of an interaction contact.</Summary>
+                        <LongDescription>This is the main ID of a contact or corporate account in an external system or origin.Examples of external IDs are a SAP CRM ID, a Facebook ID, or the contact's ID in a Web Shop.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Contact Origin" sap:heading="Origin of Interaction Contact" sap:quickinfo="Origin of Interaction Contact Data" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>The origin of an interaction contact ID indicates the source of an ID, in other words, where it originated.</Summary>
+                        <LongDescription>The origin could be the source system from which an ID derived, such as SAP CRM, or it can indicate the type of ID in question, such as email or mobile phone.You can set up the origins you want to use in the configuration app Origin of Contact IDs or in the Customizing activity Define Origins of Contact IDs.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactSubscriptionID" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Contact: Subscription ID" sap:heading="Contact Permission ID" sap:quickinfo="Contact Permission ID">
+                    <Documentation>
+                        <Summary>This is the ID of the contact permission.</Summary>
+                        <LongDescription>The ContactPermissionID and ContactPermissionOrigin properties store marketing permissions.An example is: first.lastname@mail.de</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactSubscriptionOrigin" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Contact: Subscription Origin" sap:heading="Contact Permission Origin" sap:quickinfo="Contact Permission Origin">
+                    <Documentation>
+                        <Summary>This is the origin of the contact ID where marketing permissions are stored.</Summary>
+                        <LongDescription>The origin indicates the source of an ID, in other words, where it originated. The ContactPermissionID and ContactPermissionOrigin properties store marketing permissions.You can maintain the origins you use in the Define Origins of Contact ID Customizing activity or in the Origins of Contact ID configuration activity.Examples of origins are EMAIL or MOBILE.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="ContactSubscriptionOriginName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Contact: Subscription Origin Name" sap:heading="Description for Origin of Contact Data" sap:quickinfo="Description for Origin of Interaction Contact Data" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a free text description of the origin.</Summary>
+                        <LongDescription>This is a read-only field.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CommunicationMedium" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Communication Medium">
+                    <Documentation>
+                        <Summary>This is a path or channel used for communication or through which an interaction happened.</Summary>
+                        <LongDescription>Examples of communication media can be EMAIL, PHONE, WEB, and specific social media channels (to be changed!).You can configure communication media in the configuration activity Manage Interaction Content.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="CommunicationMediumName" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Communication Medium: Name" sap:heading="Communication Medium Description" sap:quickinfo="Description of Communication Medium" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a free text description of a communication medium.</Summary>
+                        <LongDescription>The communication medium describes the channel that a contact used to interact with your company.You can configure communication media in the configuration activity Manage Interaction Content.Examples of communication media are email, phone, text message, or social media.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionUTCDateTime" Type="Edm.DateTimeOffset" Nullable="false" Precision="7" sap:unicode="false" sap:label="Subcription: UTC Date/Time" sap:heading="UTC Timestamp" sap:quickinfo="UTC Timestamp for API-Services">
+                    <Documentation>
+                        <Summary>The timestamp refers to the time the interaction took place, not to the time the record was created on the database.</Summary>
+                        <LongDescription>The timestamp must always be UTC time.When you import data, the local timestamp plus the difference to UTC is also allowed. For example, for New York local time 14:00:00, which is 5 hours before UTC, you could import the timestamp as: 2017-12-18T14:00:00-05:00 or 2017-12-18T19:00:00.When data is read, the UTC timestamp is always returned.An alternative UTC OData Format would be:Number of milliseconds since midnight Jan 1, 1970: /Date(1406014140922)/</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionSignUpExists" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Subscription: Sign Up Exists" sap:heading="Opt-In" sap:quickinfo="Opt-In for Marketing Permission">
+                    <Documentation>
+                        <Summary>This field indicates whether permission has been granted or not. The permission values can be Y (Yes) or N (No).</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionTopic" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Subscription Topic" sap:heading="Communication Category ID" sap:quickinfo="Comminication Category ID">
+                    <Documentation>
+                        <Summary>A grouping defined to manage newsletter subscriptions and communication limits for use in marketing campaigns.</Summary>
+                        <LongDescription>A communication category can be assigned to an email or text message marketing campaign. It determines, for example, if contacts can subscribe or unsubscribe to newsletters or events using a landing page.When you create a newsletter subscription, the response of this request also contains the newsletter subscription name in the property.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionTopicName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Subscription: Topic Name" sap:quickinfo="Communication Category Name">
+                    <Documentation>
+                        <Summary>The name of a communication category. A communication category is a grouping to manage newsletter subscriptions for marketing campaigns.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionSourceObject" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Subscription: Source Object" sap:heading="Generic Object ID" sap:quickinfo="Generic Object ID">
+                    <Documentation>
+                        <Summary>The ID of the result object, for example, material number.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionSourceObjectType" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Subscription: Source Object Type" sap:heading="Generic Object Type" sap:quickinfo="Object Type">
+                    <Documentation>
+                        <Summary>A recommendation data source type that is defined to an ITEM data source class, for example, SAP Commerce Product.</Summary>
+                        <LongDescription>You can use the ItemSourceType entity to enable your customer channel to choose BasketObjectType from a value help.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionSourceSystem" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Subscription: Source System" sap:heading="Source System ID" sap:quickinfo="Interaction Source System ID"/>
+                <Property Name="SubscriptionSourceSystemType" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Subscription: Source System Type" sap:heading="Source System Type" sap:quickinfo="Interaction Source System Type">
+                    <Documentation>
+                        <Summary>This field contains the type of source system from which the interaction data came.</Summary>
+                        <LongDescription>The source system type identifies the type of system in which the interaction occurred. Types of source system include web shops, C4C systems or clickstream monitoring tools.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionSourceCommMedium" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Subscription: Source Communication Medium" sap:heading="Permission Source Communication Medium" sap:quickinfo="Source Communication Medium">
+                    <Documentation>
+                        <Summary>This is a path or channel used to indicate from which communication medium  a permission or subscription has been created.</Summary>
+                        <LongDescription>You can configure communication media in the configuration app Manage Interaction Content or in Customizing for SAP Marketing under Interactions -&gt; Define Communication Media. Examples of communication media can be EMAIL, PHONE, WEB.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionSrceCommMediumName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Subscription: Name of Source Communication Medium" sap:heading="Communication Medium Description" sap:quickinfo="Description of Communication Medium" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This is a free text description of a communication medium.</Summary>
+                        <LongDescription>The communication medium describes the channel that a contact used to interact with your company.You can configure communication media in the configuration activity Manage Interaction Content.Examples of communication media are email, phone, text message, or social media.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="IsConfirmationRequired" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Is Confirmation Required?" sap:heading="Confirmation Is Required" sap:quickinfo="Perm/Subscr. Is Confirmation Required" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This is an indicator showing if a confirmation is required before storing the permission or subscription.</Summary>
+                        <LongDescription>If the parameter is set to TRUE, the permission is stored using the double opt-in or opt-out process.If the property is not specified in the payload or it is set to FALSE the permission is directly stored.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="Last Changed By User" sap:heading="Full Name" sap:quickinfo="Full Name of Person" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>This field contains the complete personal name. It is usually generated from the individual name components (without title).</Summary>
+                        <LongDescription>There are two exceptions:The field contents were assembled by converting data from a previous release from the previous title and name fields because the title could not be assigned automatically to a title key . In this case the field CONVERTED ("Status of the field NAME_TEXT") has the value 'X'.The field contents were maintained manually using a supplementary function in dialog, e.g. because the complete name cannot be split into the specified name parts. In this case the field CONVERTED ("Status of the field NAME_TEXT") has the value 'M'.The field CONVERTED ("Status of the field NAME_TEXT") has the value SPACE if neither of the exceptions applies.</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:unicode="false" sap:label="Last Change Date/Time" sap:heading="UTC Timestamp" sap:quickinfo="UTC Timestamp for API-Services" sap:creatable="false" sap:updatable="false">
+                    <Documentation>
+                        <Summary>The timestamp refers to the time the interaction took place, not to the time the record was created on the database.</Summary>
+                        <LongDescription>The timestamp must always be UTC time.When you import data, the local timestamp plus the difference to UTC is also allowed. For example, for New York local time 14:00:00, which is 5 hours before UTC, you could import the timestamp as: 2017-12-18T14:00:00-05:00 or 2017-12-18T19:00:00.When data is read, the UTC timestamp is always returned.An alternative UTC OData Format would be:Number of milliseconds since midnight Jan 1, 1970: /Date(1406014140922)/</LongDescription>
+                    </Documentation>
+                </Property>
+                <Property Name="SubscriptionNoteText" Type="Edm.String" Nullable="false" MaxLength="1000" sap:unicode="false" sap:label="Subscription: Note Text" sap:heading="Note" sap:quickinfo="Marketing Permission Note" sap:sortable="false" sap:filterable="false">
+                    <Documentation>
+                        <Summary>This is a note text.</Summary>
+                        <LongDescription/>
+                    </Documentation>
+                </Property>
+            </EntityType>
+            <ComplexType Name="TextCT">
+                <Property Name="Text" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="ContactOriginDataMarketingSubscription" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.ContactOriginData" Multiplicity="1" Role="FromRole_ContactOriginDataMarketingSubscription"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingSubscription" Multiplicity="*" Role="ToRole_ContactOriginDataMarketingSubscription"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactOriginDataMarketingSubscription">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactOriginDataMarketingSubscription">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactOriginDataMarketingPermission" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.ContactOriginData" Multiplicity="1" Role="FromRole_ContactOriginDataMarketingPermission"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingPermission" Multiplicity="*" Role="ToRole_ContactOriginDataMarketingPermission"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactOriginDataMarketingPermission">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactOriginDataMarketingPermission">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactOriginDataMarketingArea" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.ContactOriginData" Multiplicity="1" Role="FromRole_ContactOriginDataMarketingArea"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingArea" Multiplicity="*" Role="ToRole_ContactOriginDataMarketingArea"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactOriginDataMarketingArea">
+                        <PropertyRef Name="ContactOrigin"/>
+                        <PropertyRef Name="ContactID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactOriginDataMarketingArea">
+                        <PropertyRef Name="ContactOrigin"/>
+                        <PropertyRef Name="ContactID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactOriginDataMarketingLocation" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.ContactOriginData" Multiplicity="1" Role="FromRole_ContactOriginDataMarketingLocation"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingLocation" Multiplicity="*" Role="ToRole_ContactOriginDataMarketingLocation"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactOriginDataMarketingLocation">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactOriginDataMarketingLocation">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactOriginDataMarketingAttribute" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.ContactOriginData" Multiplicity="1" Role="FromRole_ContactOriginDataMarketingAttribute"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingAttribute" Multiplicity="*" Role="ToRole_ContactOriginDataMarketingAttribute"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactOriginDataMarketingAttribute">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactOriginDataMarketingAttribute">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactOriginDataAdditionalID" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.ContactOriginData" Multiplicity="1" Role="FromRole_ContactOriginDataAdditionalID"/>
+                <End Type="API_MKT_CONTACT_SRV.AdditionalID" Multiplicity="*" Role="ToRole_ContactOriginDataAdditionalID"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactOriginDataAdditionalID">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactOriginDataAdditionalID">
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AdditionalIDMarketingArea" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.AdditionalID" Multiplicity="1" Role="FromRole_AdditionalIDMarketingArea"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingArea" Multiplicity="*" Role="ToRole_AdditionalIDMarketingArea"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AdditionalIDMarketingArea">
+                        <PropertyRef Name="ContactOrigin"/>
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="InteractionContactAdditionalOrigin"/>
+                        <PropertyRef Name="InteractionContactAdditionalExternalID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AdditionalIDMarketingArea">
+                        <PropertyRef Name="ContactOrigin"/>
+                        <PropertyRef Name="ContactID"/>
+                        <PropertyRef Name="ContactOrigin"/>
+                        <PropertyRef Name="ContactID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactMarketingPermission" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.Contact" Multiplicity="1" Role="FromRole_ContactMarketingPermission"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingPermission" Multiplicity="*" Role="ToRole_ContactMarketingPermission"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactMarketingPermission">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactMarketingPermission">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactMarketingArea" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.Contact" Multiplicity="1" Role="FromRole_ContactMarketingArea"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingArea" Multiplicity="*" Role="ToRole_ContactMarketingArea"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactMarketingArea">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactMarketingArea">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactMarketingLocation" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.Contact" Multiplicity="1" Role="FromRole_ContactMarketingLocation"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingLocation" Multiplicity="*" Role="ToRole_ContactMarketingLocation"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactMarketingLocation">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactMarketingLocation">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactContactOriginData" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.Contact" Multiplicity="1" Role="FromRole_ContactContactOriginData"/>
+                <End Type="API_MKT_CONTACT_SRV.ContactOriginData" Multiplicity="*" Role="ToRole_ContactContactOriginData"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactContactOriginData">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactContactOriginData">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactAdditionalID" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.Contact" Multiplicity="1" Role="FromRole_ContactAdditionalID"/>
+                <End Type="API_MKT_CONTACT_SRV.AdditionalID" Multiplicity="*" Role="ToRole_ContactAdditionalID"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactAdditionalID">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactAdditionalID">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactMarketingAttribute" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.Contact" Multiplicity="1" Role="FromRole_ContactMarketingAttribute"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingAttribute" Multiplicity="*" Role="ToRole_ContactMarketingAttribute"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactMarketingAttribute">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactMarketingAttribute">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactAccountTeamMember" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.Contact" Multiplicity="1" Role="FromRole_ContactAccountTeamMember"/>
+                <End Type="API_MKT_CONTACT_SRV.AccountTeamMember" Multiplicity="*" Role="ToRole_ContactAccountTeamMember"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactAccountTeamMember">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactAccountTeamMember">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ContactMarketingSubscription" sap:content-version="3">
+                <End Type="API_MKT_CONTACT_SRV.Contact" Multiplicity="1" Role="FromRole_ContactMarketingSubscription"/>
+                <End Type="API_MKT_CONTACT_SRV.MarketingSubscription" Multiplicity="*" Role="ToRole_ContactMarketingSubscription"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ContactMarketingSubscription">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ContactMarketingSubscription">
+                        <PropertyRef Name="ContactUUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="API_MKT_CONTACT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="MarketingPermissions" EntityType="API_MKT_CONTACT_SRV.MarketingPermission" sap:creatable="false" sap:deletable="false" sap:content-version="3"/>
+                <EntitySet Name="MarketingAreas" EntityType="API_MKT_CONTACT_SRV.MarketingArea" sap:creatable="false" sap:deletable="false" sap:content-version="3"/>
+                <EntitySet Name="MarketingLocations" EntityType="API_MKT_CONTACT_SRV.MarketingLocation" sap:creatable="false" sap:deletable="false" sap:content-version="3"/>
+                <EntitySet Name="Contacts" EntityType="API_MKT_CONTACT_SRV.Contact" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3"/>
+                <EntitySet Name="ContactOriginData" EntityType="API_MKT_CONTACT_SRV.ContactOriginData" sap:creatable="false" sap:deletable="false" sap:content-version="3"/>
+                <EntitySet Name="AdditionalIDs" EntityType="API_MKT_CONTACT_SRV.AdditionalID" sap:creatable="false" sap:deletable="false" sap:content-version="3"/>
+                <EntitySet Name="MarketingAttributes" EntityType="API_MKT_CONTACT_SRV.MarketingAttribute" sap:creatable="false" sap:content-version="3"/>
+                <EntitySet Name="AccountTeamMembers" EntityType="API_MKT_CONTACT_SRV.AccountTeamMember" sap:creatable="false" sap:content-version="3"/>
+                <EntitySet Name="MarketingSubscriptions" EntityType="API_MKT_CONTACT_SRV.MarketingSubscription" sap:creatable="false" sap:deletable="false" sap:content-version="3"/>
+                <AssociationSet Name="ContactMarketingAttributes" Association="API_MKT_CONTACT_SRV.ContactMarketingAttribute" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="Contacts" Role="FromRole_ContactMarketingAttribute"/>
+                    <End EntitySet="MarketingAttributes" Role="ToRole_ContactMarketingAttribute"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactMarketingLocations" Association="API_MKT_CONTACT_SRV.ContactMarketingLocation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="Contacts" Role="FromRole_ContactMarketingLocation"/>
+                    <End EntitySet="MarketingLocations" Role="ToRole_ContactMarketingLocation"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactMarketingPermissions" Association="API_MKT_CONTACT_SRV.ContactMarketingPermission" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="Contacts" Role="FromRole_ContactMarketingPermission"/>
+                    <End EntitySet="MarketingPermissions" Role="ToRole_ContactMarketingPermission"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactOriginDataMarketingAttributes" Association="API_MKT_CONTACT_SRV.ContactOriginDataMarketingAttribute" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="ContactOriginData" Role="FromRole_ContactOriginDataMarketingAttribute"/>
+                    <End EntitySet="MarketingAttributes" Role="ToRole_ContactOriginDataMarketingAttribute"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactOriginDataAdditionalIDs" Association="API_MKT_CONTACT_SRV.ContactOriginDataAdditionalID" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="ContactOriginData" Role="FromRole_ContactOriginDataAdditionalID"/>
+                    <End EntitySet="AdditionalIDs" Role="ToRole_ContactOriginDataAdditionalID"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactMarketingAreas" Association="API_MKT_CONTACT_SRV.ContactMarketingArea" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="Contacts" Role="FromRole_ContactMarketingArea"/>
+                    <End EntitySet="MarketingAreas" Role="ToRole_ContactMarketingArea"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactOriginDataMarketingPermissions" Association="API_MKT_CONTACT_SRV.ContactOriginDataMarketingPermission" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="ContactOriginData" Role="FromRole_ContactOriginDataMarketingPermission"/>
+                    <End EntitySet="MarketingPermissions" Role="ToRole_ContactOriginDataMarketingPermission"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactMarketingSubscription_AssocSet" Association="API_MKT_CONTACT_SRV.ContactMarketingSubscription" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="Contacts" Role="FromRole_ContactMarketingSubscription"/>
+                    <End EntitySet="MarketingSubscriptions" Role="ToRole_ContactMarketingSubscription"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactAdditionalIDs" Association="API_MKT_CONTACT_SRV.ContactAdditionalID" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="Contacts" Role="FromRole_ContactAdditionalID"/>
+                    <End EntitySet="AdditionalIDs" Role="ToRole_ContactAdditionalID"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactOriginDataMarketingLocations" Association="API_MKT_CONTACT_SRV.ContactOriginDataMarketingLocation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="ContactOriginData" Role="FromRole_ContactOriginDataMarketingLocation"/>
+                    <End EntitySet="MarketingLocations" Role="ToRole_ContactOriginDataMarketingLocation"/>
+                </AssociationSet>
+                <AssociationSet Name="AdditionalIDMarketingAreas" Association="API_MKT_CONTACT_SRV.AdditionalIDMarketingArea" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="AdditionalIDs" Role="FromRole_AdditionalIDMarketingArea"/>
+                    <End EntitySet="MarketingAreas" Role="ToRole_AdditionalIDMarketingArea"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactOriginDataMarketingSubscriptions" Association="API_MKT_CONTACT_SRV.ContactOriginDataMarketingSubscription" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="ContactOriginData" Role="FromRole_ContactOriginDataMarketingSubscription"/>
+                    <End EntitySet="MarketingSubscriptions" Role="ToRole_ContactOriginDataMarketingSubscription"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactAccountTeamMembers" Association="API_MKT_CONTACT_SRV.ContactAccountTeamMember" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="Contacts" Role="FromRole_ContactAccountTeamMember"/>
+                    <End EntitySet="AccountTeamMembers" Role="ToRole_ContactAccountTeamMember"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactContactOriginData" Association="API_MKT_CONTACT_SRV.ContactContactOriginData" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="Contacts" Role="FromRole_ContactContactOriginData"/>
+                    <End EntitySet="ContactOriginData" Role="ToRole_ContactContactOriginData"/>
+                </AssociationSet>
+                <AssociationSet Name="ContactOriginDataMarketingAreas" Association="API_MKT_CONTACT_SRV.ContactOriginDataMarketingArea" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="3">
+                    <End EntitySet="ContactOriginData" Role="FromRole_ContactOriginDataMarketingArea"/>
+                    <End EntitySet="MarketingAreas" Role="ToRole_ContactOriginDataMarketingArea"/>
+                </AssociationSet>
+                <FunctionImport Name="ContactOriginDeleteAdditionalIDs" ReturnType="API_MKT_CONTACT_SRV.ContactOriginData" EntitySet="ContactOriginData" m:HttpMethod="POST">
+                    <Parameter Name="ContactID" Type="Edm.String" Mode="In" MaxLength="255"/>
+                    <Parameter Name="ContactOrigin" Type="Edm.String" Mode="In" MaxLength="20"/>
+                </FunctionImport>
+                <FunctionImport Name="ContactOriginDeleteAllMktgAreas" ReturnType="API_MKT_CONTACT_SRV.ContactOriginData" EntitySet="ContactOriginData" m:HttpMethod="POST">
+                    <Parameter Name="ContactID" Type="Edm.String" Mode="In" MaxLength="255"/>
+                    <Parameter Name="ContactOrigin" Type="Edm.String" Mode="In" MaxLength="20"/>
+                </FunctionImport>
+                <FunctionImport Name="ContactDeleteAllAccountTeamMembers" ReturnType="API_MKT_CONTACT_SRV.Contact" EntitySet="Contacts" m:HttpMethod="POST">
+                    <Parameter Name="ContactID" Type="Edm.String" Mode="In" MaxLength="255"/>
+                    <Parameter Name="ContactOrigin" Type="Edm.String" Mode="In" MaxLength="20"/>
+                </FunctionImport>
+                <FunctionImport Name="ContactOriginDeleteAllMktgLocations" ReturnType="API_MKT_CONTACT_SRV.ContactOriginData" EntitySet="ContactOriginData" m:HttpMethod="POST">
+                    <Parameter Name="ContactID" Type="Edm.String" Mode="In" MaxLength="255"/>
+                    <Parameter Name="ContactOrigin" Type="Edm.String" Mode="In" MaxLength="20"/>
+                </FunctionImport>
+                <FunctionImport Name="ContactOriginDeleteAllMktgAttributes" ReturnType="API_MKT_CONTACT_SRV.ContactOriginData" EntitySet="ContactOriginData" m:HttpMethod="POST">
+                    <Parameter Name="ContactID" Type="Edm.String" Mode="In" MaxLength="255"/>
+                    <Parameter Name="ContactOrigin" Type="Edm.String" Mode="In" MaxLength="20"/>
+                </FunctionImport>
+                <FunctionImport Name="ContactDeleteMarketingArea" ReturnType="API_MKT_CONTACT_SRV.Contact" EntitySet="Contacts" m:HttpMethod="POST">
+                    <Parameter Name="ContactID" Type="Edm.String" Mode="In" MaxLength="255"/>
+                    <Parameter Name="ContactOrigin" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="InteractionContactMktgArea" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="https://host:port/sap/opu/odata/sap/API_MKT_CONTACT_SRV;v=0003/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="https://host:port/sap/opu/odata/sap/API_MKT_CONTACT_SRV;v=4/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

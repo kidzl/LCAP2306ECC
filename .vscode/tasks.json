@@ -1,7 +1,12 @@
 {
-  "version": "1.19.0",
+  "version": "2.0.0",
   "tasks": [
-      {
+    {
+      "type": "dpt.ptdeploy",
+      "label": "Deploy LCAPNEW",
+      "taskType": "Deploy"
+    },
+    {
       "label": "npm-install",
       "type": "process",
       "command": "npm",
@@ -9,7 +14,7 @@
         "install"
       ],
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}/"
       }
     },
     {
@@ -28,7 +33,7 @@
         "npm-install"
       ],
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}/"
       }
     },
     {
@@ -39,13 +44,8 @@
         "BuildMDK"
       ],
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}/"
       }
-    },
-    {
-      "type": "dpt.ptdeploy",
-      "label": "Deploy LCAPNEW",
-      "taskType": "Deploy"
     }
   ]
 }

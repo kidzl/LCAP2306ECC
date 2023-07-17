@@ -1,3 +1,4 @@
+using { Marketing_Contact } from '../srv/external/Marketing_Contact.cds'; 
 namespace LCAPNEW;
 
 using
