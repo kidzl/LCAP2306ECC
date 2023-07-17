@@ -1,0 +1,51 @@
+{
+  "version": "1.19.0",
+  "tasks": [
+      {
+      "label": "npm-install",
+      "type": "process",
+      "command": "npm",
+      "args": [
+        "install"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "BuildMDK",
+      "type": "process",
+      "command": "npx",
+      "args": [
+        "mdk",
+        "build",
+        "--target",
+        "module",
+        "--ui5",
+        "--recursive"
+      ],
+      "dependsOn": [
+        "npm-install"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "dev-project",
+      "type": "shell",
+      "command": "basctl --command PT.runner.generateLaunchPage",
+      "dependsOn": [
+        "BuildMDK"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "type": "dpt.ptdeploy",
+      "label": "Deploy LCAPNEW",
+      "taskType": "Deploy"
+    }
+  ]
+}
