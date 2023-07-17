@@ -1,0 +1,36 @@
+---
+general:
+  buildTool: "mta"
+service:
+  buildToolVersion: "MBTJ11N16"
+stages:
+  Build:
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: false
+  Additional Unit Tests:
+    npmExecuteScripts: false
+    karmaExecuteTests: false
+  Acceptance:
+    cloudFoundryDeploy: false
+    cfApiEndpoint: ""
+    cfOrg: ""
+    cfSpace: ""
+    cfCredentialsId: ""
+    uiVeri5ExecuteTests: false
+  Compliance:
+    sonarExecuteScan: false
+  Release:
+    cloudFoundryDeploy: true
+    cfApiEndpoint: "https://api.cf.sap.hana.ondemand.com"
+    cfOrg: "LCAP_qa"
+    cfSpace: "qa"
+    cfCredentialsId: "my-cf-credential"
+    tmsUpload: false
+steps:
+  artifactPrepareVersion:
+    versioningType: "cloud_noTag"
+  cloudFoundryDeploy:
+    mtaDeployParameters: "-f --version-rule ALL"
+  tmsUpload:
+    nodeName: ""
+    credentialsId: ""
