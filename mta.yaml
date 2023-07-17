@@ -1,0 +1,237 @@
+_schema-version: '3.1'
+ID: LCAPNEW
+version: 1.0.0
+description: A simple CAP project.
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - rm -rf build/dist
+        - mkdir -p build/dist
+        - rm -rf build/ui-deployer
+        - mkdir -p build/ui-deployer
+    - builder: custom
+      commands:
+        - npm install --production
+        - >-
+          bash -c "cds -v | grep 'cds-dk' || npm i --production --no-save
+          @sap/cds-dk @sap/mdk-tools"
+        - bash -c "export PATH=$PATH:$(pwd)/node_modules/.bin"
+        - cds build --production
+modules:
+  - name: LCAPNEW-Contacts
+    type: html5
+    path: app/Contacts
+    build-parameters:
+      builder: custom
+      commands:
+        - npx -p @sap/mdk-tools mdk build --target module --ui5 --forceUpdate
+        - bash -c "cd Web/MDKModule && rm -rf .npmrc && npm install"
+        - bash -c "cd Web/MDKModule && npm run build"
+        - >-
+          bash -c "mv Web/MDKModule/MDKModule-content.zip
+          ../../build/dist/Contacts.zip"
+        - rm -rf Web/MDKModule/dist
+      _artifactName: Contacts.zip
+      supported-platforms: []
+      build-result: ../../build/dist
+  - name: LCAPNEW-LCAPNEW.MyFioriApp
+    type: html5
+    path: app/LCAPNEW.MyFioriApp
+    build-parameters:
+      builder: custom
+      commands:
+        - rm -rf dist-zip dist
+        - >-
+          npx -p @ui5/cli@^3.0.0 ui5 build --dest dist
+          --include-task=generateManifestBundle
+          --include-task=generateCachebusterInfo
+        - mkdir dist-zip
+        - bash -c "cd dist && npx bestzip ../dist-zip/LCAPNEWMyFioriApp.zip *"
+      _artifactName: LCAPNEWMyFioriApp.zip
+      supported-platforms: []
+      build-result: dist-zip
+  - name: LCAPNEW-MyApp
+    type: html5
+    path: app/MyApp
+    build-parameters:
+      builder: custom
+      commands:
+        - npx -p @sap/mdk-tools mdk build --target module --ui5 --forceUpdate
+        - bash -c "cd Web/MDKModule && rm -rf .npmrc && npm install"
+        - bash -c "cd Web/MDKModule && npm run build"
+        - >-
+          bash -c "mv Web/MDKModule/MDKModule-content.zip
+          ../../build/dist/MyApp.zip"
+        - rm -rf Web/MDKModule/dist
+      _artifactName: MyApp.zip
+      supported-platforms: []
+      build-result: ../../build/dist
+  - name: LCAPNEW-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+      ignore:
+        - node_modules
+        - package-lock.json
+    requires:
+      - name: LCAPNEW-service-uaa
+      - name: LCAPNEW-service-db
+  - name: LCAPNEW-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      memory: 256MB
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    build-parameters:
+      builder: npm
+      ignore:
+        - node_modules
+        - package-lock.json
+    requires:
+      - name: LCAPNEW-service-uaa
+      - name: LCAPNEW-service-db
+      - name: LCAPNEW-service-destination
+      - name: LCAPNEW-service-metadata
+      - name: LCAPNEW-service-connectivity
+      - name: LCAPNEW-service-logs
+  - name: LCAPNEW-aux-destinations
+    type: com.sap.application.content
+    parameters:
+      content:
+        subaccount:
+          existing_destinations_policy: update
+          destinations:
+            - Authentication: OAuth2UserTokenExchange
+              Name: LCAPNEW-service-uaa
+              ServiceInstanceName: LCAPNEW-uaa
+              ServiceKeyName: LCAPNEW-uaa-key
+              sap.cloud.service: lcap.LCAPNEW
+            - Authentication: OAuth2UserTokenExchange
+              Name: LCAPNEW-app-srv
+              TokenServiceInstanceName: LCAPNEW-uaa
+              TokenServiceKeyName: LCAPNEW-uaa-key
+              URL: ~{srv-api/srv-url}
+              sap.cloud.service: lcap.LCAPNEW
+            - Name: LCAPNEW-service-html5-apps-repo-host
+              ServiceInstanceName: LCAPNEW-html5-apps-repo-host
+              ServiceKeyName: LCAPNEW-html5-apps-repo-host-key
+              sap.cloud.service: lcap.LCAPNEW
+    build-parameters:
+      no-source: true
+    requires:
+      - name: LCAPNEW-service-uaa
+        parameters:
+          service-key:
+            name: LCAPNEW-uaa-key
+      - name: srv-api
+      - name: LCAPNEW-service-html5-apps-repo-host
+        parameters:
+          service-key:
+            name: LCAPNEW-html5-apps-repo-host-key
+      - name: LCAPNEW-service-destination
+        parameters:
+          content-target: true
+  - name: LCAPNEW-launchpad
+    type: html5
+    path: build/launchpad
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - >-
+          npx -p @ui5/cli@^3.0.0 ui5 build --dest dist
+          --include-task=generateManifestBundle
+          --include-task=generateCachebusterInfo
+        - bash -c "cd dist && npx bestzip ../../../build/dist/launchpad.zip *"
+        - rm -rf dist
+      _artifactName: launchpad.zip
+      supported-platforms: []
+      build-result: ../../build/dist
+  - name: LCAPNEW-aux-ui-deployer
+    type: com.sap.application.content
+    path: build/ui-deployer
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: LCAPNEW-Contacts
+          artifacts:
+            - Contacts.zip
+          target-path: resources
+        - name: LCAPNEW-LCAPNEW.MyFioriApp
+          artifacts:
+            - LCAPNEWMyFioriApp.zip
+          target-path: resources
+        - name: LCAPNEW-MyApp
+          artifacts:
+            - MyApp.zip
+          target-path: resources
+        - name: LCAPNEW-launchpad
+          artifacts:
+            - launchpad.zip
+          target-path: resources
+    requires:
+      - name: LCAPNEW-service-html5-apps-repo-host
+        parameters:
+          content-target: true
+resources:
+  - type: org.cloudfoundry.managed-service
+    name: LCAPNEW-service-uaa
+    parameters:
+      service: xsuaa
+      service-plan: application
+      service-name: LCAPNEW-uaa
+      path: xs-security.json
+      config:
+        xsappname: LCAPNEW-${space}
+        role-collections: []
+  - type: org.cloudfoundry.managed-service
+    name: LCAPNEW-service-db
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+      service-name: LCAPNEW-db
+  - type: org.cloudfoundry.managed-service
+    name: LCAPNEW-service-destination
+    parameters:
+      service: destination
+      service-plan: lite
+      service-name: LCAPNEW-destination
+      config:
+        HTML5Runtime_enabled: true
+        version: 1.0.0
+  - type: org.cloudfoundry.user-provided-service
+    name: LCAPNEW-service-metadata
+    parameters:
+      service: metadata
+      service-plan: standard
+      service-name: LCAPNEW-metadata
+      config:
+        default-domain: ${default-domain}
+  - type: org.cloudfoundry.managed-service
+    name: LCAPNEW-service-connectivity
+    parameters:
+      service: connectivity
+      service-plan: lite
+      service-name: LCAPNEW-connectivity
+  - type: org.cloudfoundry.managed-service
+    name: LCAPNEW-service-logs
+    parameters:
+      service: application-logs
+      service-plan: lite
+      service-name: LCAPNEW-logs
+  - type: org.cloudfoundry.managed-service
+    name: LCAPNEW-service-html5-apps-repo-host
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-name: LCAPNEW-html5-apps-repo-host
